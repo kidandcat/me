@@ -18,8 +18,8 @@ export class App extends React.Component {
     const { payload, getTweets } = this.props;
     return (
       <div>
-        <h1>Payload!</h1>
-        <div>{payload}</div>
+        <h1>Payload</h1>
+        <div>{JSON.stringify(payload, null, 4)}</div>
         <button onClick={getTweets}>Get tweets</button>
       </div>
     );
