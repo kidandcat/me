@@ -1,13 +1,10 @@
 import { combineReducers, AnyAction } from "redux";
-import { colorReducer, ColorState } from "./color";
-import { timeReducer, TimeState } from "./time";
+import { tweetReducer, TweetState } from "./tweet";
 
 export interface RootState {
-  color: ColorState;
-  time: TimeState;
+  tweet: TweetState;
 }
 
 export const rootReducer = combineReducers<AnyAction>({
-  color: colorReducer,
-  time: timeReducer
+  tweet: tweetReducer
 });

@@ -1,6 +1,5 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { AnyAction, Store, applyMiddleware, compose, createStore } from "redux";
 import { createEpicMiddleware } from "redux-observable";
-import logger from "redux-logger";
 import { rootEpic } from "./epics";
 import { rootReducer } from "./reducers";
 
@@ -9,10 +8,6 @@ const isDevEnv = true;
 
 function _getMiddleware() {
   let middleware = [createEpicMiddleware(rootEpic)];
-
-  if (isDevEnv) {
-    middleware = [...middleware, logger];
-  }
 
   return applyMiddleware(...middleware);
 }

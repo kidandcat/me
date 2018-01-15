@@ -1,2 +1,1 @@
-export * from "./timeSelector";
-export * from "./colorSelector";
+export * from "./tweetSelector";
