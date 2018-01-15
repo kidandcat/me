@@ -1,11 +1,12 @@
 import * as React from "react";
 import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
-import { payloadSelector } from "../State/selectors";
+import { selectPayload, selectTweets } from "../State/selectors";
 import { TweetActionCreators } from "../State/actions";
 
 const mapStateToProps = createStructuredSelector({
-  payload: payloadSelector
+  payload: selectPayload,
+  tweets: selectTweets
 });
 
 const mapDispatchToProps = {
@@ -19,7 +20,7 @@ export class App extends React.Component {
     return (
       <div>
         <h1>Payload</h1>
-        <pre>{JSON.stringify(payload, null, 4)}</pre>
+        <pre>{payload}</pre>
         <button onClick={getTweets}>Get tweets</button>
       </div>
     );
