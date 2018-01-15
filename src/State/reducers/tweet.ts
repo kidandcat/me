@@ -1,7 +1,9 @@
 import { TweetActions } from "../actions/tweet";
 import { Reducer } from "redux";
-import { RequestStatus } from "../type";
-import { generateRequestReducer } from "./reducer-generators";
+import {
+  RequestStatus,
+  generateRequestReducer
+} from "../redux-observable-request";
 
 export type TweetState = {
   tweetList: object[];

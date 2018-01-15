@@ -1,5 +1,8 @@
-import { RequestStatus, IRequestStatus } from "../type";
-import { generateRequestActions } from "./action-generators";
+import {
+  generateRequestActions,
+  RequestStatus,
+  IRequestStatus
+} from "../redux-observable-request";
 
 const prefix = "TWEET_REQUEST";
 
