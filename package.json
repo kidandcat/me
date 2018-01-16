@@ -1,52 +1,48 @@
 {
   "name": "me",
-  "version": "1.0.1",
-  "description": "",
-  "main": "index.js",
-  "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "recompose": "^0.26.0",
-    "redux": "^3.7.2",
-    "redux-logger": "^3.0.6",
-    "redux-observable": "^0.17.0",
-    "reselect": "^3.0.1",
-    "rxjs": "^5.5.5"
+  "description": "About Jairo Caro-Accino Viciana",
+  "version": "0.0.0",
+  "homepage": "",
+  "main": "src",
+  "keywords": [
+    "feathers"
+  ],
+  "author": {
+    "name": "Jairo",
+    "email": "jairo.viciana@accenture.com"
   },
-  "devDependencies": {
-    "@babel/core": "^7.0.0-beta.35",
-    "@babel/preset-typescript": "^7.0.0-beta.35",
-    "@types/enzyme": "^3.1.6",
-    "@types/jest": "^21.1.8",
-    "@types/react": "^16.0.31",
-    "@types/react-dom": "^16.0.3",
-    "@types/react-redux": "^5.0.14",
-    "@types/recompose": "^0.24.4",
-    "@types/rx": "^4.1.1",
-    "@types/webpack-env": "^1.13.3",
-    "enzyme": "^3.2.0",
-    "enzyme-adapter-react-16": "^1.1.0",
-    "jest": "^21.2.1",
-    "npm-run-all": "^4.1.2",
-    "parcel-bundler": "^1.2.0",
-    "ts-jest": "^21.2.4",
-    "typescript": "^2.6.2"
+  "contributors": [],
+  "bugs": {},
+  "directories": {
+    "lib": "src",
+    "test": "test/"
+  },
+  "engines": {
+    "node": "^9.0.0",
+    "yarn": ">= 0.18.0"
   },
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "test": "jest --coverage"
+    "test": "yarn run eslint && yarn run mocha",
+    "eslint": "eslint src/. test/. --config .eslintrc.json",
+    "start": "node src/",
+    "mocha": "mocha test/ --recursive --exit"
   },
-  "keywords": [],
-  "author": "Jairo Caro-Accino Viciana",
-  "license": "MIT",
-  "jest": {
-    "moduleFileExtensions": ["ts", "tsx", "js"],
-    "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-    },
-    "setupFiles": ["./test-setup/shims.js", "./test-setup/.jestrc.js"],
-    "testRegex": "/src/.*\\.test\\.(ts|tsx|js)$"
+  "dependencies": {
+    "@feathersjs/configuration": "^1.0.2",
+    "@feathersjs/errors": "^3.2.1",
+    "@feathersjs/express": "^1.1.2",
+    "@feathersjs/feathers": "^3.0.5",
+    "@feathersjs/socketio": "^3.0.2",
+    "compression": "^1.7.1",
+    "cors": "^2.8.4",
+    "helmet": "^3.9.0",
+    "serve-favicon": "^2.4.5",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "mocha": "^4.1.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
   }
 }
