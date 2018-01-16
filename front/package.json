@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@feathersjs/client": "^3.1.2",
+    "@types/": "feathersjs/feathers",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
@@ -42,11 +44,18 @@
   "author": "Jairo Caro-Accino Viciana",
   "license": "MIT",
   "jest": {
-    "moduleFileExtensions": ["ts", "tsx", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
     "transform": {
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "setupFiles": ["./test-setup/shims.js", "./test-setup/.jestrc.js"],
+    "setupFiles": [
+      "./test-setup/shims.js",
+      "./test-setup/.jestrc.js"
+    ],
     "testRegex": "/src/.*\\.test\\.(ts|tsx|js)$"
   }
 }
