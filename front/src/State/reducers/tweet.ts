@@ -7,32 +7,23 @@ import {
 
 export type TweetState = {
   tweetList: object[];
-  tweetRequestStatus: string;
-  tweetRequestPayload: any;
 };
 
 const INITIAL_STATE = {
-  tweetList: [],
-  tweetRequestStatus: RequestStatus.cancel,
-  tweetRequestPayload: null
+  tweetList: []
 };
-
-const tweetRequestReducer = generateRequestReducer(
-  TweetActions,
-  "tweetRequestStatus",
-  "tweetRequestPayload"
-);
 
 export const tweetReducer: Reducer<TweetState> = (
   state: TweetState = INITIAL_STATE,
   action
 ) => {
   switch (action.type) {
-    case "SOME_ACTION":
+    case TweetActions.tweet:
       return {
         ...state,
-        something: "here"
+        tweetList: [...state.tweetList, action.payload]
       };
+    default:
+      return state;
   }
-  return tweetRequestReducer(state, action);
 };
