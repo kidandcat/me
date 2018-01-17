@@ -2,6 +2,7 @@ import * as React from "react";
 import { createStructuredSelector } from "reselect";
 import { connect } from "react-redux";
 import { selectTweets } from "../State/selectors";
+import { LeyLineDrop } from "../style/ley-line";
 
 const mapStateToProps = createStructuredSelector({
   tweets: selectTweets
@@ -9,14 +10,18 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = {};
 
+export type Props = {
+  tweets: string[];
+};
+
 @connect(mapStateToProps, mapDispatchToProps)
-export class App extends React.Component {
+export class App extends React.Component<Props, {}> {
   render() {
-    const { tweets } = this.props;
+    const { tweets = [] } = this.props;
     return (
       <div>
-        <h1>Tweets</h1>
-        <pre>{tweets}</pre>
+        <h1>T</h1>
+        {tweets.map((t, i) => <LeyLineDrop key={i} text={t} />)}
       </div>
     );
   }

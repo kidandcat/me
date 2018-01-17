@@ -8,7 +8,3 @@ export const newTweet = payload => ({
   type: TweetActions.tweet,
   payload
 });
-
-export const boundActions = dispatch => {
-  return { boundNewTweet: payload => dispatch(newTweet(payload)) };
-};

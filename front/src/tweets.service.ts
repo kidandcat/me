@@ -8,6 +8,7 @@ const app = feathers();
 app.configure(socketio(socket));
 
 export function loadTweetsService(newTweet) {
+  window.newTweet = newTweet;
   console.log("Tweets Service Ready");
   app.service("tweets").on("created", (message: string) => {
     console.log("dispatcher", newTweet);
@@ -15,3 +16,7 @@ export function loadTweetsService(newTweet) {
     newTweet(message);
   });
 }
+
+window.tweet = () => {
+  window.newTweet("False tweet");
+};
