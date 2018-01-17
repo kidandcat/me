@@ -21,7 +21,7 @@ export class App extends React.Component<Props, {}> {
     return (
       <div>
         <h1>T</h1>
-        {tweets.map((t, i) => <LeyLineDrop key={i} text={t} />)}
+        {tweets.map(tweet => <LeyLineDrop text={tweet} />)}
       </div>
     );
   }

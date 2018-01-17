@@ -3,7 +3,7 @@ import * as anime from "animejs";
 import styled from "styled-components";
 
 export type LeyLineDropProps = {
-  text: string;
+  tweet: object;
 };
 
 export class LeyLineDrop extends React.Component<LeyLineDropProps, {}> {
@@ -43,7 +43,7 @@ export class LeyLineDrop extends React.Component<LeyLineDropProps, {}> {
     return (
       <Line innerRef={el => (this.line = el)} top={this.top}>
         <Drop innerRef={el => (this.drop = el)}>
-          <Text>{this.props.text}</Text>
+          <Text>{JSON.stringify(this.props.tweet)}</Text>
         </Drop>
       </Line>
     );
