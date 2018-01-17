@@ -58,5 +58,5 @@ module.exports = function(app) {
   // });
 
   // publish tweets
-  app.service("tweets").publish("created", () => app.channel("authenticated"));
+  app.service("tweets").publish("created", () => app.channel("anonymous"));
 };

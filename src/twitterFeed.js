@@ -1,6 +1,7 @@
 const Twitter = require("twitter");
 
-module.exports = function() {
+module.exports = function(app) {
+  console.log("Twitter service started");
   const client = new Twitter({
     consumer_key: "LSNiYQjiUgcwvvwEzAEJq7sgn",
     consumer_secret: "bWRud9irmhe1Qe3obwdkKcW8f79VLh21OfiKU4WAWxt4xzAcUF",
@@ -10,6 +11,7 @@ module.exports = function() {
 
   const stream = client.stream("statuses/filter", { track: "javascript" });
   stream.on("data", function(event) {
+    console.log("Tweet received, broadcasting it");
     app.service("tweets").create({
       text: event.text,
       created_at: event.created_at,
@@ -18,14 +20,6 @@ module.exports = function() {
       verified: event.user.verified,
       image: event.user.profile_image_url_https
     });
-    /*
-    event.text
-    event.created_at
-    event.user.name
-    event.user.screen_name  Username
-    event.user.verified,
-    event.user.profile_image_url_https
-    */
   });
 
   stream.on("error", function(error) {
