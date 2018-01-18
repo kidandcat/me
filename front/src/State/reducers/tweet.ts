@@ -21,14 +21,18 @@ export const tweetReducer: Reducer<TweetState> = (
     case TweetActions.tweet:
       return {
         ...state,
-        tweetList: [...state.tweetList, action.payload]
+        tweetList: {
+          ...state.tweetList,
+          [action.payload.id]: action.payload
+        }
       };
     case TweetActions.remove:
+      const { [action.payload.id]: omit, ...res } = state.tweetList;
       return {
         ...state,
-        tweetList: state.tweetList.filter(
-          item => item.text !== action.payload.text
-        )
+        tweetList: {
+          ...res
+        }
       };
     default:
       return state;
