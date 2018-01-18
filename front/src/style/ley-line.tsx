@@ -1,14 +1,17 @@
 import * as React from "react";
 import * as anime from "animejs";
 import styled from "styled-components";
+import { Tweet } from "../tweets.service";
 
 export type LeyLineDropProps = {
-  tweet: object;
+  tweet: Tweet;
+  removeTweet: Function;
 };
 
 export class LeyLineDrop extends React.Component<LeyLineDropProps, {}> {
   private line: HTMLElement;
   private drop: HTMLElement;
+  private top: number;
 
   constructor(props) {
     super(props);
@@ -16,6 +19,7 @@ export class LeyLineDrop extends React.Component<LeyLineDropProps, {}> {
   }
 
   componentDidMount() {
+    const { tweet, removeTweet } = this.props;
     anime
       .timeline()
       .add({
@@ -28,7 +32,7 @@ export class LeyLineDrop extends React.Component<LeyLineDropProps, {}> {
         targets: this.drop,
         translateX: 2500,
         translateY: ["-50%", "-50%"],
-        duration: 3000,
+        duration: getRandomArbitrary(4000, 8000),
         delay: 1000,
         easing: "linear"
       })
@@ -36,14 +40,18 @@ export class LeyLineDrop extends React.Component<LeyLineDropProps, {}> {
         targets: this.line,
         opacity: [1, 0],
         duration: 500,
-        easing: "linear"
+        easing: "linear",
+        complete: () => {
+          removeTweet(tweet);
+        }
       });
   }
   render() {
+    const { tweet } = this.props;
     return (
       <Line innerRef={el => (this.line = el)} top={this.top}>
         <Drop innerRef={el => (this.drop = el)}>
-          <Text>{JSON.stringify(this.props.tweet)}</Text>
+          <Text>{tweet.text}</Text>
         </Drop>
       </Line>
     );
@@ -54,7 +62,7 @@ const Text = styled.div`
   width: 100%;
   height: 100%;
   border: 1px solid red;
-  padding: 1.5em 1.5em 1.5em 3em;
+  padding: 1.5em 1.5em 1.5em 1.5em;
   box-sizing: border-box;
 `;
 

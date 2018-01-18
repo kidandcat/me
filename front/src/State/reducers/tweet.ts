@@ -23,6 +23,13 @@ export const tweetReducer: Reducer<TweetState> = (
         ...state,
         tweetList: [...state.tweetList, action.payload]
       };
+    case TweetActions.remove:
+      return {
+        ...state,
+        tweetList: state.tweetList.filter(
+          item => item.text !== action.payload.text
+        )
+      };
     default:
       return state;
   }
