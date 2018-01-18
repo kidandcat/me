@@ -32,7 +32,7 @@ export class LeyLineDrop extends React.Component<LeyLineDropProps, {}> {
         targets: this.drop,
         translateX: 2500,
         translateY: ["-50%", "-50%"],
-        duration: getRandomArbitrary(4000, 8000),
+        duration: getRandomArbitrary(5000, 10000),
         delay: 1000,
         easing: "linear"
       })
@@ -61,7 +61,6 @@ export class LeyLineDrop extends React.Component<LeyLineDropProps, {}> {
 const Text = styled.div`
   width: 100%;
   height: 100%;
-  border: 1px solid red;
   padding: 1.5em 1.5em 1.5em 1.5em;
   box-sizing: border-box;
 `;
@@ -70,19 +69,21 @@ const Line = styled.div`
   height: 0px;
   width: 200%;
   position: absolute;
-  border: 1px solid skyblue;
+  border: 1px solid #00aced;
   left: -500px;
   top: ${props => `${props.top}vh`};
   opacity: 0;
+  z-index: 1;
 `;
 
 const Drop = styled.div`
-  border: 1px solid skyblue;
+  border: 1px solid #00aced;
   border-radius: 60% / 60%;
   height: 70px;
   width: 400px;
   transform: translateY(-50%);
   background-color: white;
+  z-index: 1001;
 `;
 
 function getRandomArbitrary(min, max) {
