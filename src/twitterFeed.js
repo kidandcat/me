@@ -9,9 +9,8 @@ module.exports = function(app) {
     access_token_secret: "NARXlchd0flvbZjMYX9sPWCSvKzGGcqQWyMvOTyuxgcvy"
   });
 
-  const stream = client.stream("statuses/filter", { track: "javascript" });
+  const stream = client.stream("statuses/filter", { track: "nintendo" });
   stream.on("data", function(event) {
-    console.log("Tweet received, broadcasting it");
     app.service("tweets").create({
       text: event.text,
       created_at: event.created_at,

@@ -24,7 +24,7 @@ export class LeyLineDrop extends React.Component<LeyLineDropProps, {}> {
       .timeline()
       .add({
         targets: this.line,
-        opacity: 1,
+        opacity: 0.99,
         duration: 500,
         easing: "linear"
       })
@@ -32,15 +32,15 @@ export class LeyLineDrop extends React.Component<LeyLineDropProps, {}> {
         targets: this.drop,
         translateX: 2500,
         translateY: ["-50%", "-50%"],
-        duration: getRandomArbitrary(5000, 10000),
-        delay: 1000,
+        duration: getRandomArbitrary(10000, 15000),
         easing: "linear"
       })
       .add({
         targets: this.line,
-        opacity: [1, 0],
+        opacity: [0.99, 0],
         duration: 500,
         easing: "linear",
+        delay: 2000,
         complete: () => {
           removeTweet(tweet);
         }
@@ -49,11 +49,12 @@ export class LeyLineDrop extends React.Component<LeyLineDropProps, {}> {
   render() {
     const { tweet } = this.props;
     return (
-      <Line innerRef={el => (this.line = el)} top={this.top}>
-        <Drop innerRef={el => (this.drop = el)}>
+      <React.Fragment>
+        <Line innerRef={el => (this.line = el)} top={this.top} />
+        <Drop innerRef={el => (this.drop = el)} top={this.top}>
           <Text>{tweet.text}</Text>
         </Drop>
-      </Line>
+      </React.Fragment>
     );
   }
 }
@@ -68,12 +69,13 @@ const Text = styled.div`
 const Line = styled.div`
   height: 0px;
   width: 200%;
-  position: absolute;
   border: 1px solid #00aced;
+  opacity: 0;
+  z-index: -1;
+
+  position: absolute;
   left: -500px;
   top: ${props => `${props.top}vh`};
-  opacity: 0;
-  z-index: 1;
 `;
 
 const Drop = styled.div`
@@ -84,6 +86,10 @@ const Drop = styled.div`
   transform: translateY(-50%);
   background-color: white;
   z-index: 1001;
+
+  position: absolute;
+  left: -500px;
+  top: ${props => `${props.top}vh`};
 `;
 
 function getRandomArbitrary(min, max) {
