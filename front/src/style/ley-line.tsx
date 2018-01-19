@@ -62,7 +62,7 @@ export class LeyLineDrop extends React.Component<LeyLineDropProps, {}> {
 const Text = styled.div`
   width: 100%;
   height: 100%;
-  padding: 1.5em 1.5em 1.5em 1.5em;
+  padding: 2em 2em 2em 2em;
   box-sizing: border-box;
 `;
 
@@ -81,8 +81,8 @@ const Line = styled.div`
 const Drop = styled.div`
   border: 1px solid #00aced;
   border-radius: 60% / 60%;
-  height: 70px;
-  width: 400px;
+  height: auto;
+  width: ${getRandomArbitrary(300, 600)}px;
   transform: translateY(-50%);
   background-color: white;
   z-index: 1001;
